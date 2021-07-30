@@ -14,8 +14,19 @@ dropArea.addEventListener("dragover",function(e){
 //Event listener on drop
 dropArea.addEventListener("drop", async function(e){
     e.preventDefault();
+    //drop file
     file=e.dataTransfer.files[0];
-    uploadFile(file)
+    //type of file
+    let fileType=file.type;
+    //valid extension 
+    let validExtensions = ["image/jpeg", "image/jpg", "image/png"];
+    //check if the extension exists
+    if(validExtensions.includes(fileType)){
+        uploadFile(file)
+    }
+    else{
+        alert("upload a valid file")
+    }
 })
 //left arrow
 leftArrow.addEventListener("click",function(){
